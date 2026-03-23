@@ -14,9 +14,12 @@ Aplikácia plánovač programu pre organizácie bude zameraná na efektívne ria
 - **Vedúci bloku:** Je tiež členom tímu.  
     >Funkcionalita (*future work*): Navyše môže odosielať finálnu verziu bloku vedúcemu tímu na potvrdenie. (A ďaľšie...)
 - **Vedúci tímu:** Má nastarosti program na celej akcii.
-    >Funkcionalita: Môže vytvárať a editovať programové bloky a ich súčasti v mojej akcii (CRUD).  
+    >Funkcionalita: Môže vytvárať a editovať programové bloky a ich súčasti v mojich akciach (CRUD).  
     >Priradzuje programové bloky členom tímu
 
+![UCD](use_case.svg)
+
+<br>
 
 ## Dátový model
 
@@ -60,8 +63,8 @@ Aplikácia plánovač programu pre organizácie bude zameraná na efektívne ria
 ## Časový plán
 
 5. týždeň (16.3.-21.3.) - vypracovanie špecifikácie, nastavenie git-hub projektu
-6. týždeň (22.3.-27.3.) - prihlasovanie/registrácia
-7. týždeň (28.3.-5.4.) - čítanie všetkých programových blokov, GUI
+6. týždeň (22.3.-27.3.) - čítanie všetkých programových blokov, GUI
+7. týždeň (28.3.-5.4.) - prihlasovanie/registrácia
 8. týždeň (6.4.-12.4.) - pridavanie programových blokov veducimi timu
 9. týždeň (13.4.-19.4.) - deployment beta verzie
 10. týždeň (20.4.-26.4.) - priradzovanie programových blokov členom
