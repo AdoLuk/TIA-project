@@ -13,7 +13,7 @@ Aplikácia plánovač programu pre organizácie bude zameraná na efektívne ria
     >Môže sa prihlásiť/odhlásiť.
 - **Vedúci bloku:** Je tiež členom tímu.  
     >Funkcionalita (*future work*): Navyše môže odosielať finálnu verziu bloku vedúcemu tímu na potvrdenie. (A ďaľšie...)
-- **Vedúci tímu:** Má nastarosti program na celej akcii.
+- **Vedúci tímu:** Má nastarosti program na celej akcii. Spravujú sa na úrovni DB.
     >Funkcionalita: Môže vytvárať a editovať programové bloky a ich súčasti v mojich akciach (CRUD).  
     >Priradzuje programové bloky členom tímu
 
@@ -33,6 +33,7 @@ Aplikácia plánovač programu pre organizácie bude zameraná na efektívne ria
     - Obsahuje zoznam členov (t.j. všetkých používateľov), ktorí sa podieľajú na tvorbe programu.
 - **AKCIA:** 
     - Obsahuje zoznam akcii, ktoré sa už zorganizovali, alebo sa práve plánujú.
+    -  Spravujú sa na úrovni DB.
     - id_člena: referencia na člena, ktorý je vedúci tejto akcie. Vedúci je práve jeden. 
     - typ_akcie, názov: opisujú akciu
     - dátum_od, dátum_do: plánovaný  dátum začiatku a konca akcie
