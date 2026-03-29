@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="149.62061mm"
+   height="254.18166mm"
+   viewBox="0 0 149.62061 254.18166"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   sodipodi:docname="use_case.svg"
+   inkscape:export-filename="use_case.webp"
+   inkscape:export-xdpi="59.957119"
+   inkscape:export-ydpi="59.957119"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="0.69753788"
+     inkscape:cx="221.49335"
+     inkscape:cy="360.5539"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="41"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-15.207499,-18.466114)">
+    <ellipse
+       style="fill:none;stroke:#000000;stroke-width:1.32292;stroke-linejoin:bevel"
+       id="path1"
+       cx="122.63216"
+       cy="77.009804"
+       rx="41.534485"
+       ry="14.793103" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Serif;-inkscape-font-specification:'Serif, Normal';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.176389;stroke-linejoin:bevel;stroke-dasharray:none"
+       x="122.63216"
+       y="74.948174"
+       id="text1"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.176389;stroke-dasharray:none"
+         x="122.63216"
+         y="74.948174">čítanie (read) všetkých </tspan><tspan
+         sodipodi:role="line"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.176389;stroke-dasharray:none"
+         x="122.63216"
+         y="80.239838"
+         id="tspan2">programových blokov a akcii</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Serif;-inkscape-font-specification:'Serif, Normal';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.176389;stroke-linejoin:bevel;stroke-dasharray:none"
+       x="26.769915"
+       y="73.771614"
+       id="text1-24"><tspan
+         sodipodi:role="line"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.176389;stroke-dasharray:none"
+         x="26.769915"
+         y="73.771614"
+         id="tspan2-6">člen tímu</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Serif;-inkscape-font-specification:'Serif, Normal';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.176389;stroke-linejoin:bevel;stroke-dasharray:none"
+       x="28.30895"
+       y="178.37639"
+       id="text1-24-0"><tspan
+         sodipodi:role="line"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.176389;stroke-dasharray:none"
+         x="28.30895"
+         y="178.37639"
+         id="tspan2-6-6">vedúci bloku</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Serif;-inkscape-font-specification:'Serif, Normal';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.176389;stroke-linejoin:bevel;stroke-dasharray:none"
+       x="28.261955"
+       y="272.51724"
+       id="text1-24-3"><tspan
+         sodipodi:role="line"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.176389;stroke-dasharray:none"
+         x="28.261955"
+         y="272.51724"
+         id="tspan2-6-4">vedúci tímu</tspan></text>
+    <ellipse
+       style="fill:none;stroke:#000000;stroke-width:1.32292;stroke-linejoin:bevel"
+       id="path1-8"
+       cx="122.63216"
+       cy="120.34209"
+       rx="41.534485"
+       ry="14.793103" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Serif;-inkscape-font-specification:'Serif, Normal';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.176389;stroke-linejoin:bevel;stroke-dasharray:none"
+       x="122.63216"
+       y="116.16379"
+       id="text1-2"><tspan
+         sodipodi:role="line"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.176389;stroke-dasharray:none"
+         x="122.63216"
+         y="116.16379"
+         id="tspan2-5">triedenie programových </tspan><tspan
+         sodipodi:role="line"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.176389;stroke-dasharray:none"
+         x="122.63216"
+         y="121.45545"
+         id="tspan5">blokov a akcii na základe typov,</tspan><tspan
+         sodipodi:role="line"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.176389;stroke-dasharray:none"
+         x="122.63216"
+         y="126.74712"
+         id="tspan6">dátumov, moje/všetky a pod.</tspan></text>
+    <ellipse
+       style="fill:none;stroke:#000000;stroke-width:1.32292;stroke-linejoin:bevel"
+       id="path1-1"
+       cx="122.63216"
+       cy="165.06761"
+       rx="41.534485"
+       ry="14.793103" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Serif;-inkscape-font-specification:'Serif, Normal';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.176389;stroke-linejoin:bevel;stroke-dasharray:none"
+       x="122.63216"
+       y="162.47687"
+       id="text1-5"><tspan
+         sodipodi:role="line"
+         id="tspan1-2"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.176389;stroke-dasharray:none"
+         x="122.63216"
+         y="162.47687">upravovanie (update) mojich </tspan><tspan
+         sodipodi:role="line"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.176389;stroke-dasharray:none"
+         x="122.63216"
+         y="167.76852"
+         id="tspan2-7">programových blokov</tspan></text>
+    <ellipse
+       style="fill:none;stroke:#000000;stroke-width:1.32292;stroke-linejoin:bevel"
+       id="path1-8-6"
+       cx="122.63216"
+       cy="208.39989"
+       rx="41.534485"
+       ry="14.793103" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Serif;-inkscape-font-specification:'Serif, Normal';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.176389;stroke-linejoin:bevel;stroke-dasharray:none"
+       x="122.7126"
+       y="206.33823"
+       id="text1-2-1"><tspan
+         sodipodi:role="line"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.176389;stroke-dasharray:none"
+         x="122.7126"
+         y="206.33823"
+         id="tspan6-3">upravovanie (update)</tspan><tspan
+         sodipodi:role="line"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.176389;stroke-dasharray:none"
+         x="122.7126"
+         y="211.62988"
+         id="tspan8">mojich akcii</tspan></text>
+    <ellipse
+       style="fill:none;stroke:#000000;stroke-width:1.32292;stroke-linejoin:bevel"
+       id="path1-1-8"
+       cx="122.63216"
+       cy="251.18382"
+       rx="41.534485"
+       ry="14.793103" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Serif;-inkscape-font-specification:'Serif, Normal';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.176389;stroke-linejoin:bevel;stroke-dasharray:none"
+       x="123.13385"
+       y="245.94722"
+       id="text1-5-5"><tspan
+         sodipodi:role="line"
+         id="tspan1-2-7"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.176389;stroke-dasharray:none"
+         x="123.13385"
+         y="245.94722">vytváranie a upravovanie</tspan><tspan
+         sodipodi:role="line"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.176389;stroke-dasharray:none"
+         x="123.13385"
+         y="251.23888"
+         id="tspan11">(create, read, update, delete)</tspan><tspan
+         sodipodi:role="line"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.176389;stroke-dasharray:none"
+         x="123.13385"
+         y="256.53055"
+         id="tspan10">priradení s blokmi v mojich </tspan><tspan
+         sodipodi:role="line"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.176389;stroke-dasharray:none"
+         x="123.13385"
+         y="261.8222"
+         id="tspan2-7-6">akciach</tspan></text>
+    <ellipse
+       style="fill:none;stroke:#000000;stroke-width:1.32292;stroke-linejoin:bevel"
+       id="path1-8-6-1"
+       cx="122.63216"
+       cy="33.920677"
+       rx="41.534485"
+       ry="14.793103" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;font-family:Serif;-inkscape-font-specification:'Serif, Normal';text-align:center;writing-mode:lr-tb;direction:ltr;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:0.176389;stroke-linejoin:bevel;stroke-dasharray:none"
+       x="122.70412"
+       y="31.859015"
+       id="text1-2-1-8"><tspan
+         sodipodi:role="line"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.176389;stroke-dasharray:none"
+         x="122.70412"
+         y="31.859015"
+         id="tspan8-2">prihlasovanie, odhlasovanie,</tspan><tspan
+         sodipodi:role="line"
+         style="fill:#000000;fill-opacity:1;stroke-width:0.176389;stroke-dasharray:none"
+         x="122.70412"
+         y="37.150677"
+         id="tspan12">registrácia</tspan></text>
+    <g
+       id="g15"
+       transform="matrix(0.73320174,0,0,0.73320174,4.7161223,4.9807398)">
+      <path
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.705556;stroke-linejoin:bevel;stroke-dasharray:none"
+         d="m 17.970265,85.828134 12.87422,-19.311332 12.87422,19.311332"
+         id="path12"
+         sodipodi:nodetypes="ccc" />
+      <path
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.705556;stroke-linejoin:bevel;stroke-dasharray:none"
+         d="M 30.844485,66.516802 V 38.086233"
+         id="path13"
+         sodipodi:nodetypes="cc" />
+      <path
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.705556;stroke-linejoin:bevel;stroke-dasharray:none"
+         d="M 20.115969,46.669047 H 41.573001"
+         id="path14"
+         sodipodi:nodetypes="cc" />
+      <circle
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.633175;stroke-linejoin:bevel;stroke-dasharray:none"
+         id="path15"
+         cx="30.844484"
+         cy="28.668562"
+         r="9.6834126" />
+    </g>
+    <g
+       id="g15-8"
+       transform="matrix(0.73320174,0,0,0.73320174,5.2121559,109.08723)">
+      <path
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.705556;stroke-linejoin:bevel;stroke-dasharray:none"
+         d="m 17.970265,85.828134 12.87422,-19.311332 12.87422,19.311332"
+         id="path12-7"
+         sodipodi:nodetypes="ccc" />
+      <path
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.705556;stroke-linejoin:bevel;stroke-dasharray:none"
+         d="M 30.844485,66.516802 V 38.086233"
+         id="path13-4"
+         sodipodi:nodetypes="cc" />
+      <path
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.705556;stroke-linejoin:bevel;stroke-dasharray:none"
+         d="M 20.115969,46.669047 H 41.573001"
+         id="path14-2"
+         sodipodi:nodetypes="cc" />
+      <circle
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.633175;stroke-linejoin:bevel;stroke-dasharray:none"
+         id="path15-7"
+         cx="30.844484"
+         cy="28.668562"
+         r="9.6834126" />
+    </g>
+    <g
+       id="g15-9"
+       transform="matrix(0.73320174,0,0,0.73320174,5.306525,202.70368)">
+      <path
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.705556;stroke-linejoin:bevel;stroke-dasharray:none"
+         d="m 17.970265,85.828134 12.87422,-19.311332 12.87422,19.311332"
+         id="path12-8"
+         sodipodi:nodetypes="ccc" />
+      <path
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.705556;stroke-linejoin:bevel;stroke-dasharray:none"
+         d="M 30.844485,66.516802 V 38.086233"
+         id="path13-6"
+         sodipodi:nodetypes="cc" />
+      <path
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.705556;stroke-linejoin:bevel;stroke-dasharray:none"
+         d="M 20.115969,46.669047 H 41.573001"
+         id="path14-5"
+         sodipodi:nodetypes="cc" />
+      <circle
+         style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.633175;stroke-linejoin:bevel;stroke-dasharray:none"
+         id="path15-0"
+         cx="30.844484"
+         cy="28.668562"
+         r="9.6834126" />
+    </g>
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.705556;stroke-linejoin:bevel;stroke-dasharray:none"
+       d="M 26.016653,116.4044 25.74844,79.927449 21.725246,85.291707 29.50342,85.023493 25.74844,79.927449"
+       id="path17" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.705556;stroke-linejoin:bevel;stroke-dasharray:none"
+       d="m 28.162355,213.76569 -0.268213,-30.03984 4.023196,5.09604 -6.705324,-0.26821 2.682128,-4.0232"
+       id="path18" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.705556;stroke-linejoin:bevel;stroke-dasharray:none"
+       d="m 75.636042,37.549809 -5.900684,-2.682131 2.950342,8.851026 3.486766,-5.900684 -36.745168,9.11924 36.208745,24.943802 -0.804639,-5.900684 -4.291407,5.900684 5.096046,-0.536426"
+       id="path19" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.705556;stroke-linejoin:bevel;stroke-dasharray:none"
+       d="m 78.318171,111.30836 -5.364258,-2.41392 6.168896,-4.2914 -0.268214,6.97353 -38.890871,-64.371097 42.914067,102.993757 -0.804638,-8.85102 -5.364259,2.95034 5.632472,5.36426"
+       id="path20" />
+    <path
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.705556;stroke-linejoin:bevel;stroke-dasharray:none"
+       d="m 76.44068,212.69284 -7.241749,0.53643 5.632471,7.24175 2.145705,-7.77818 -37.818023,30.57627 34.599468,6.97354 -5.096045,-6.1689 -2.413916,9.11924 6.973535,-2.68213"
+       id="path21" />
+  </g>
+</svg>
