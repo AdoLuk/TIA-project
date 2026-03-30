@@ -63,9 +63,9 @@ Aplikácia plánovač programu pre organizácie bude zameraná na efektívne ria
 
 ## Časový plán
 
-5. týždeň (16.3.-21.3.) - vypracovanie špecifikácie, nastavenie git-hub projektu
-6. týždeň (22.3.-27.3.) - čítanie všetkých programových blokov, GUI
-7. týždeň (28.3.-5.4.) - prihlasovanie/registrácia
+5. týždeň (16.3.-22.3.) - vypracovanie špecifikácie, nastavenie git-hub projektu
+6. týždeň (23.3.-29.3.) - čítanie všetkých programových blokov, GUI
+7. týždeň (30.3.-5.4.) - prihlasovanie/registrácia
 8. týždeň (6.4.-12.4.) - pridavanie programových blokov veducimi timu
 9. týždeň (13.4.-19.4.) - deployment beta verzie
 10. týždeň (20.4.-26.4.) - priradzovanie programových blokov členom
