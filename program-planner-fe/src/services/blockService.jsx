@@ -5,7 +5,7 @@ const BLOCKS_STORAGE_KEY = "blocks";
 let storage = localStorage;
 
 function getBlocks() {
-    return Promise.resolve(SAMPLE_BLOCKS); // this is just mock data
+    //return Promise.resolve(SAMPLE_BLOCKS); // this is just mock data
     
     return fetch("/api/v1/blocks").then(  // promise is resolved
         (response) => {
@@ -18,6 +18,7 @@ function getBlocks() {
             // client handle (e.g. show error message)
             // Returning empty array for simplicity only!
             console.log("Error getting blocks");
+            console.error(error);
             return [];
         });/**/
 }

@@ -1,0 +1,22 @@
+{
+  "name": "program-planner-be",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "dev": "nodemon  ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "^4.22.1",
+    "morgan": "^1.10.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.29.0",
+    "@babel/preset-react": "^7.28.5",
+    "@babel/register": "^7.28.6",
+    "nodemon": "^3.1.14"
+  }
+}
