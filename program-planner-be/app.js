@@ -15,7 +15,18 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');*/
 
+import cors from 'cors';
+// ...
+
+
 var app = express();
+
+app.use(cors({
+  origin: ["http://localhost:5173"], // pridaj všetky dev/prod originy
+  methods: ["GET","POST","PUT","PATCH","DELETE","OPTIONS"],
+  credentials: true,
+  //allowedHeaders: ["Content-Type","Authorization"]
+}));
 
 app.use(logger('dev'));
 app.use(express.json());
