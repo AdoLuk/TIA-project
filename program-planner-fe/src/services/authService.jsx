@@ -1,5 +1,5 @@
 function login(username, password) {
-  return fetch("http://localhost:3000/api/v1/auth/login", {
+  return fetch("/api/v1/auth/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ username, password }),
@@ -17,7 +17,7 @@ function login(username, password) {
 }
 
 function logout() {
-  return fetch("http://localhost:3000/api/v1/auth/logout", {method: "DELETE", credentials: "include"})
+  return fetch("/api/v1/auth/logout", {method: "DELETE", credentials: "include"})
     .then((response) => {  // promise is resolved
       if (!response.ok) {
         if (response.status === 400) {
