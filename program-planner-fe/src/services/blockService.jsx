@@ -1,5 +1,3 @@
-import { SAMPLE_BLOCKS } from "../data/sample_blocks";
-
 const BLOCKS_STORAGE_KEY = "blocks";
 
 let storage = localStorage;
@@ -7,7 +5,7 @@ let storage = localStorage;
 function getBlocks() {
     //return Promise.resolve(SAMPLE_BLOCKS); // this is just mock data
     
-    return fetch("http://localhost:3000/api/v1/blocks").then(  // promise is resolved
+    return fetch("/api/v1/blocks").then(  // promise is resolved
         (response) => {
             if (!response.ok) { // HTTP status code NOT between 200-299
                 throw new Error("Error getting blocks");
@@ -22,6 +20,17 @@ function getBlocks() {
             return [];
         });/**/
 }
+
+function addBlock(block) {
+    return fetch("/api/v1/blocks", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(block)
+    });
+}
+
 
 function clearBlocks() {
     return storage.removeItem(BLOCKS_STORAGE_KEY);

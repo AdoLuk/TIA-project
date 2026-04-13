@@ -1,7 +1,8 @@
-var express = require('express'); // ESM: import
-var { getUsers } = require('../../models/users.js');
-var { comparePassword } = require('../../utils/authHelpers.js');
-const { config } = require('../../config/config.js');
+import express from 'express';
+import { getUsers } from '../../models/users.js';
+import { comparePassword } from '../../utils/authHelpers.js';
+import { config } from '../../config/config.js';
+
 var router = express.Router();
 
 router.post("/login", (req, res) => {
@@ -58,4 +59,4 @@ router.delete("/logout", (req, res) => {
     }
 });
 
-module.exports = router;
+export default router; // ESM: export

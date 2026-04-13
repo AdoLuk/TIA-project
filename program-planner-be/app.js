@@ -6,27 +6,10 @@ import logger from 'morgan';
 import indexRouter from './routes/index.js';
 import usersRouter from './routes/users.js';
 import blocksRouter from './routes/api_v1/blocks.js';
-
-/*var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');*/
-
-import cors from 'cors';
-// ...
+import authRouter from './routes/api_v1/auth.js';
 
 
 var app = express();
-
-app.use(cors({
-  origin: ["http://localhost:5173"], // pridaj všetky dev/prod originy
-  methods: ["GET","POST","PUT","PATCH","DELETE","OPTIONS"],
-  credentials: true,
-  //allowedHeaders: ["Content-Type","Authorization"]
-}));
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -38,6 +21,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 app.use('/api/v1/blocks', blocksRouter);
+app.use('/api/v1/auth', authRouter);
 
 
 export default app;
