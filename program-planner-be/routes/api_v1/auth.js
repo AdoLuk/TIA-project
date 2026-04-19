@@ -1,5 +1,5 @@
 import express from 'express';
-import { getUsers } from '../../models/users.js';
+import { getUsers } from '../../models/usersModels.js';
 import { comparePassword } from '../../utils/authHelpers.js';
 import { config } from '../../config/config.js';
 
@@ -8,10 +8,11 @@ var router = express.Router();
 router.post("/login", (req, res) => {
     const { username, password } = req.body;
     getUsers(username)
-        .then((result) => {            
+        .then((result) => {  
+            console.log("getUsers succeeded: " + JSON.stringify(result.rows));          
             if (result.rows && result.rows.length === 1) {                
                 const userId = result.rows[0].user_id;
-                const hashedPassword = result.rows[0].password;                
+                const hashedPassword = result.rows[0].password;
                 comparePassword(password, hashedPassword)
                     .then((isValid) => {
                         if (isValid) {
@@ -37,6 +38,7 @@ router.post("/login", (req, res) => {
             }
         })
         .catch((e) => {
+            console.log("getUsers failed");
             console.log(e);
             return res.status(500).end();
         })
