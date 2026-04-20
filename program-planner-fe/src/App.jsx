@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import BlockListPage from './pages/BlockListPage';
 import LoginPage from './pages/LoginPage';
-import EditBlockPage from './pages/editBlockPage';
+import EditBlockPage from './pages/EditBlockPage';
 
 function App() {
 
