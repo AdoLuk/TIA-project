@@ -1,5 +1,9 @@
+import React from "react";
+import { useNavigate } from "react-router-dom";
+
 function Block(props) {
-    
+    const navigate = useNavigate();
+
     return (
         <div className="row mb-5 mt-5">
             <div className="col-sm">
@@ -11,6 +15,12 @@ function Block(props) {
                 </div>
             </div>
             <div className="col-sm-3">
+                <div style={{ marginTop: '0.5rem' }}>
+                    <button className="btn btn-sm btn-primary" 
+                        onClick={() => navigate(`/blocks/edit`, { state: { block_id: props.block.block_id } })}>
+                        Edit
+                    </button>
+                </div>
                 <div>
                     <p>{props.block.begin_time} - {props.block.end_time}</p>
                 </div>

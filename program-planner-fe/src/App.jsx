@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import BlockListPage from './pages/BlockListPage';
 import LoginPage from './pages/LoginPage';
+import EditBlockPage from './pages/editBlockPage';
 
 function App() {
 
@@ -19,6 +20,10 @@ function App() {
           <Route
             path="/blocks"
             element={<BlockListPage setAuthStatus={setAuthStatus} />}
+          />
+          <Route
+            path="/blocks/edit"
+            element={<EditBlockPage setAuthStatus={setAuthStatus} />}
           />
         </Routes>
       </BrowserRouter>

@@ -1,5 +1,5 @@
 export const config = {    
     session: {
-        cookieName: 'nottwitter',        
+        cookieName: 'programPlannerAuth',        
     }
 };
