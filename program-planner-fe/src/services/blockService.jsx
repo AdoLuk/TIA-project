@@ -9,17 +9,16 @@ function getBlocks(id) {
     return fetch(url, {
         method: "GET",
         credentials: "include"
-    }).then(  // promise is resolved
+    }).then(
         (response) => {
             if (!response.ok) { // HTTP status code NOT between 200-299
+                if (response.status === 401) {
+                    throw new Error("Unauthorized - you don't have permission to access this function.");
+                }
                 throw new Error("Error getting blocks");
             }
             return response.json();
-        }).catch((error) => {
-            // console.log("Error getting blocks");
-            console.error(error);
-            return [];
-        });/**/
+        });
 }
 
 function editBlock(id, block) {
@@ -35,16 +34,13 @@ function editBlock(id, block) {
     }).then(  // promise is resolved
         (response) => {
             if (!response.ok) { // HTTP status code NOT between 200-299
-                return response.text().then((body) => {
-                    throw new Error(`Error editing block: ${response.status} ${body}`);
-                });
+                if (response.status === 401) {
+                    throw new Error("Unauthorized - you don't have permission to access this function.");
+                }
+                throw new Error("Error editing block");
             }
             return response.json();
-        }).catch((error) => {               // promise is rejected  
-            console.log("Error editing block");
-            //console.error(error);
-            throw error; // rethrow to let client handle
-        });
+        })
 }
 
 function addBlock(block) {

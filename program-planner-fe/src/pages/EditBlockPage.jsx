@@ -33,8 +33,10 @@ function EditBlockPage(props) {
                     description: block.description
                 })
             })
-            .catch((e) => setError(e.message))
-            .finally(() => setLoading(false))
+            .catch((error) => {
+                console.log(error.message);
+                props.setError(error.message);
+            }).finally(() => setLoading(false))
     }, [])
 
     function handleBlockChange(e) {
@@ -47,25 +49,25 @@ function EditBlockPage(props) {
         setSaving(true)
         setError(null)
         editBlock(id, form).then(() => {navigate('/blocks')})
-            .catch ((e) => {
-                console.error(e)
-                setError(e.message)
+            .catch ((error) => {
+                console.log(error.message);
+                props.setError(error.message);
             })
             .finally(() => {
                 setSaving(false)
             })
     }
 
-    if (loading) return <div>Loading...</div>
+    if (loading) return <div>Načitávam...</div>
 
     return (
         <div>
-            <h1>Edit Block {title}</h1>
+            <h1>Úprava bloku {title}</h1>
             <form onSubmit={onSave}>
                 <div className="form-group">
                     <div className="row m-3">
                         <div className="col-2 p-1">
-                            <label>Title</label>
+                            <label>Názov</label>
                         </div>
                         <div className="col">
                             <input
@@ -82,7 +84,7 @@ function EditBlockPage(props) {
                 <div className="form-group">
                     <div className="row m-3">
                         <div className="col-2 p-1">
-                            <label>Place</label>
+                            <label>Miesto</label>
                         </div>
                         <div className="col">
                             <input
@@ -100,7 +102,7 @@ function EditBlockPage(props) {
                 <div className="form-group">
                     <div className="row m-3">
                         <div className="col-2 p-1">
-                            <label>Begin time</label>
+                            <label>Čas od</label>
                         </div>
                         <div className="col">
                             <input
@@ -117,7 +119,7 @@ function EditBlockPage(props) {
                 <div className="form-group">
                     <div className="row m-3">
                         <div className="col-2 p-1">
-                            <label>End time</label>
+                            <label>Čas do</label>
                         </div>
                         <div className="col">
                             <input
@@ -134,7 +136,7 @@ function EditBlockPage(props) {
                 <div className="form-group">
                     <div className="row m-3">
                         <div className="col-2 p-1">
-                            <label>Description</label>
+                            <label>Popis</label>
                         </div>
                         <div className="col">
                             <textarea

@@ -16,8 +16,8 @@ function LoginPage(props) {
         e.preventDefault();
         // basic validation  
         if (username === '' || password === '') {
-            console.error(new Error('Username and password are required!'));
-            //props.setError('Username and password are required!');
+            console.log(('Username and password are required!'));
+            props.setError('Username and password are required!');
             return;
         }
 
@@ -27,13 +27,12 @@ function LoginPage(props) {
                 navigate('/blocks');
             })
             .catch((error) => {
-                console.error(error)
-                // console.log(error.message);
-                // props.setError(error.message)
+                console.log(error.message);
+                props.setError(error.message)
             });
 
         // reset error message if the form is valid
-        // props.setError('');
+        props.setError('');
     };
     
     return (
