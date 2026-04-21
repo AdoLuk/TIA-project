@@ -5,7 +5,7 @@ function Block(props) {
     const navigate = useNavigate();
 
     return (
-        <div className="row mb-5 mt-5">
+        <div className="row m-2 border bg-light rounded">
             <div className="col-sm">
                 <div className="mb-2">
                     <b>{props.block.title}</b>
@@ -18,7 +18,7 @@ function Block(props) {
                 <div style={{ marginTop: '0.5rem' }}>
                     <button className="btn btn-sm btn-primary" 
                         onClick={() => navigate(`/blocks/edit`, { state: { block_id: props.block.block_id } })}>
-                        Edit
+                        Upraviť
                     </button>
                 </div>
                 <div>
