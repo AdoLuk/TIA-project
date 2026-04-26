@@ -12,8 +12,8 @@
 - priradzovanie programových blokov členom
 
 # Vykonaná práca:
-- opravene ukladanie session do db ()
-- pridané všetky tabuľky z dátového modelu ()
+- opravene ukladanie session do db (b910159)
+- pridané všetky tabuľky z dátového modelu (b4f4e9b)
 
 # Zdôvodnenie rozdielov medzi plánom a vykonanou prácou:
 - zostalo zameškané, tak som spravil radšej to
