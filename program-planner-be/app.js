@@ -6,8 +6,9 @@ import blocksRouter from './routes/api_v1/blocks.js';
 import authRouter from './routes/api_v1/auth.js';
 
 import session from 'express-session';
-// import PgSession from "connect-pg-simple";
-// import pool from './config/db.js';
+import connectPgSimple from "connect-pg-simple";
+const PgSession = connectPgSimple(session);
+import pool from './config/db.js';
 import { config } from './config/config.js';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -25,11 +26,11 @@ if (process.env.STATUS === 'production') {
 }
 app.use(
     session({
-        // store: new PgSession({ // store sessions in DB table      
-        //     pool, 
-        //     tableName: "session", 
-        //     createTableIfMissing: true
-        // }),
+        store: new PgSession({ // store sessions in DB table      
+            pool, 
+            tableName: "session", 
+            createTableIfMissing: true
+        }),
         secret: process.env.SESSION_SECRET, // Used to sign session ID cookie. Constant in .env file or generated e.g., crypto.randomBytes(64).toString('hex')
         resave: false, // don’t save the session to DB if it hasn’t been modified
         saveUninitialized: false, // prevents creating empty sessions
