@@ -7,13 +7,13 @@ function Header(props) {
 
     function handleLogout() {
         logout()
-            .then(() => {
-                props.setAuthStatus(false);
-                navigate('/');
-            })
             .catch((error) => {
                 console.log(error.message);
                 props.setError(error.message)
+            })
+            .finally(() => {
+                props.setAuthStatus(false);
+                navigate('/');
             });
     }
 
