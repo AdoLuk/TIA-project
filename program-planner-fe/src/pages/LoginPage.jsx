@@ -22,9 +22,10 @@ function LoginPage(props) {
         }
 
         login(username, password)
-            .then(() => {
+            .then((res) => {
                 props.setAuthStatus(true);
-                navigate('/blocks');
+                props.setMyId(res.userId);
+                navigate('/events');
             })
             .catch((error) => {
                 console.log(error.message);

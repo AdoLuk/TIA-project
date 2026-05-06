@@ -12,4 +12,11 @@ const getUsers = function(username) {
     );
 };
 
-export { getUsers }
+const getUsername = function(id) {
+    return pool.query(
+        "select username from users u where u.user_id = $1",
+        [id]
+    );
+}
+
+export { getUsers, getUsername }

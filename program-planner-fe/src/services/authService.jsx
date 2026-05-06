@@ -12,7 +12,10 @@ function login(username, password) {
           throw new Error("Invalid credentials"); 
         }
         throw new Error("Error logging in");
-      }      
+      }
+      else {
+        return response.json();
+      }
     })
 }
 

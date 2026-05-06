@@ -4,6 +4,8 @@ import logger from 'morgan';
 
 import blocksRouter from './routes/api_v1/blocks.js';
 import authRouter from './routes/api_v1/auth.js';
+import eventsRouter from './routes/api_v1/events.js';
+import usersRouter from './routes/api_v1/users.js';
 
 import session from 'express-session';
 import connectPgSimple from "connect-pg-simple";
@@ -49,6 +51,8 @@ app.use(
 
 app.use('/api/v1/blocks', blocksRouter);
 app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/events', eventsRouter);
+app.use('/api/v1/users', usersRouter);
 
 
 export default app;

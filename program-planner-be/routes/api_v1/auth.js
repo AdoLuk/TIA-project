@@ -8,8 +8,7 @@ var router = express.Router();
 router.post("/login", (req, res) => {
     const { username, password } = req.body;
     getUsers(username)
-        .then((result) => {  
-            console.log("getUsers succeeded: " + JSON.stringify(result.rows));          
+        .then((result) => {         
             if (result.rows && result.rows.length === 1) {                
                 const userId = result.rows[0].user_id;
                 const hashedPassword = result.rows[0].password;
@@ -17,7 +16,7 @@ router.post("/login", (req, res) => {
                     .then((isValid) => {
                         if (isValid) {
                             req.session.userId = userId;  // creates session
-                            return res.status(200).end();
+                            return res.status(200).json({ userId }).end();  // successful login
                         }
                         // invalid password
                         else {
