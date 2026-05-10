@@ -5,6 +5,7 @@ import BlockListPage from './pages/BlockListPage';
 import LoginPage from './pages/LoginPage';
 import EditBlockPage from './pages/EditBlockPage';
 import EventsPage from './pages/EventsPage';
+import EditEventPage from './pages/EditEventPage';
 import Header from './components/Header';
 
 function App() {
@@ -37,6 +38,11 @@ function App() {
             path="/events"
             element={<EventsPage setAuthStatus={setAuthStatus} myId={myId} 
                                  error={error} setError={setError} />}
+          />
+          <Route
+            path="/events/edit"
+            element={<EditEventPage setAuthStatus={setAuthStatus} 
+                                    error={error} setError={setError} />}
           />
         </Routes>
       </BrowserRouter>
