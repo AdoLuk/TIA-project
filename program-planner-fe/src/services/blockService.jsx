@@ -23,6 +23,7 @@ function getBlocks(id) {
 
 function editBlock(id, block) {
     const url = new URL("/api/v1/blocks", window.location.origin);
+    console.log("_\nEditing block " + id + "\n_");
     if (id != null) url.searchParams.set("block_id", id);
     return fetch(url, {
         method: "PUT",
@@ -53,4 +54,22 @@ function addBlock(block) {
     });
 }
 
-export { getBlocks, editBlock, addBlock };
+function getBlockTypes(id) {
+    const url = new URL("/api/v1/blocks/types", window.location.origin);
+    if (id != null) url.searchParams.set("block_type_id", id);
+    return fetch(url, {
+        method: "GET",
+        credentials: "include"
+    }).then(
+        (response) => {
+            if (!response.ok) { // HTTP status code NOT between 200-299
+                if (response.status === 401) {
+                    throw new Error("Unauthorized - you don't have permission to access this function.");
+                }
+                throw new Error("Error getting block types");
+            }
+            return response.json();
+        });
+}
+
+export { getBlocks, editBlock, addBlock, getBlockTypes };

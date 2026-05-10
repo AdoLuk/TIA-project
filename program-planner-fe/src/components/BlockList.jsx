@@ -1,4 +1,5 @@
 import Block from "./Block";
+import { useEffect, useState } from "react";
 
 function EmptyBlockList() {
     return <div className="row">
@@ -12,10 +13,13 @@ function EmptyBlockList() {
 
 
 function BlockList({blocks}) {
-    let blockList = blocks.map((block) => <Block key={block.block_id} block={block}></Block>);
-    let emptyBlockList =  <EmptyBlockList></EmptyBlockList>;  
-  
-    return blockList.length>0 ? blockList : emptyBlockList;
-  }
+  const [blockList, setBlockList] = useState(blocks.map((block) => <Block key={block.block_id} block={block}></Block>));
+  useEffect(() => {
+    setBlockList(blocks.map((block) => <Block key={block.block_id} block={block}></Block>));
+  }, [blocks])
+  let emptyBlockList =  <EmptyBlockList></EmptyBlockList>;  
+
+  return blockList.length>0 ? blockList : emptyBlockList;
+}
 
 export { BlockList };

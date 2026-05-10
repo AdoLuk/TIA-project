@@ -32,4 +32,22 @@ function logout() {
     
 }
 
-export { login, logout };
+function isMyBlock(block_id) {
+  const url = new URL("/api/v1/auth/isMyBlock", window.location.origin);
+  url.searchParams.set("block_id", block_id);
+  return fetch(url, {
+    method: "GET",
+    credentials: "include"
+  }).then(
+    (response) => {
+      if (!response.ok) { // HTTP status code NOT between 200-299
+        if (response.status === 401) {
+          throw new Error("Unauthorized - you don't have permission to access this function.");
+        }
+        throw new Error("Error checking block ownership");
+      }
+      return response.json();
+    });
+}
+
+export { login, logout, isMyBlock };

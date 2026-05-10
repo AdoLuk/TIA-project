@@ -2,6 +2,7 @@ import express from 'express';
 import { getUsers } from '../../models/usersModels.js';
 import { comparePassword } from '../../utils/authHelpers.js';
 import { config } from '../../config/config.js';
+import { getBlockAssignments, isMyBlock } from '../../models/blockAssignmentsModels.js';
 
 var router = express.Router();
 
@@ -57,6 +58,34 @@ router.delete("/logout", (req, res) => {
         });
     } else {
         return res.status(400).end();  // bad request - session doesn't exist
+    }
+});
+
+router.get("/isMyBlock", (req, res) => {
+    const { block_id } = req.query;
+    if (!block_id) {
+        return res.status(400).end();  // bad request
+    }
+    if (req.session && req.session.userId) {
+        const user_id = req.session.userId;
+        console.log("Checking block ownership for user " + user_id + " and block " + block_id);
+        isMyBlock(block_id, user_id)
+            .then((result) => {
+                console.log("isMyBlock result from auth.js: " + JSON.stringify(result.isMyBlock));
+                return res.status(200).json({ isMyBlock: result.isMyBlock }).end();
+                // if (result.isMyBlock) {
+                //     return res.status(200).json({ isMyBlock: true }).end();
+                // } else {
+                //     return res.status(200).json({ isMyBlock: false }).end();
+                // }
+            })
+            .catch((e) => {
+                console.log("isMyBlock failed");
+                console.log(e);
+                return res.status(500).end();
+            });
+    } else {
+        return res.status(401).end();  // unauthorized
     }
 });
 

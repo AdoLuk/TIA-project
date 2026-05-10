@@ -19,7 +19,7 @@ function Header(props) {
 
     return (
         <>
-            <div className="row mb-3">
+            <div className="row">
                 <div className="col-sm-5 text-start">
                     <div className="h3 py-2">Plánovač programu</div>
                 </div>
@@ -34,10 +34,19 @@ function Header(props) {
 
                     {!props.authStatus && 
                     <a
+                        className="text-secondary"
                         href="#"
                         onClick={(e) => { e.preventDefault(); props.setError(''); navigate('/'); }}>
                         Prihlásiť sa!
                     </a>}
+                </div>
+            </div>
+            <div className="row mb-3">
+                <div className="align-left">
+                    <button className={window.location.pathname === "/events" ? "btn btn-sm btn-dark text-light" : "btn btn-sm btn-secondary text-light"} 
+                        onClick={() => navigate('/events')}>Akcie</button>
+                    <button className={window.location.pathname === "/blocks" ? "btn btn-sm btn-dark text-light" : "btn btn-sm btn-secondary text-light"} 
+                        onClick={() => navigate('/blocks')}>Bloky</button>
                 </div>
             </div>
             <div className="row">

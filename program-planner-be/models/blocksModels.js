@@ -3,17 +3,30 @@ import pool from '../config/db.js';
 // use parametrized queries to prevent SQL injection 
 
 // returns promise !
-const getBlocks = function (id) {
-    if (id != null) {
-        console.log("getBlocks called with id: " + id);
+const getBlocks = function (user_id, block_id) {
+    if (block_id != null) {
+        console.log("getBlocks called with id: " + block_id);
         return pool.query(
-            "select * from blocks b where b.block_id = $1",
-            [id]
+            `select b.*, (EXISTS(SELECT 1 FROM block_assignments ba WHERE ba.block_id = b.block_id AND ba.team_member_id = $1)) AS "isMyBlock" 
+            from blocks b 
+            where b.block_id = $2`,
+            [user_id, block_id]
         );
     }
     return pool.query(
-            "select * from blocks b"
-        );
+        `SELECT b.*, e.title AS event_title, bt.type AS block_type,
+            (EXISTS(SELECT 1 FROM block_assignments ba WHERE ba.block_id = b.block_id AND ba.team_member_id = $1)) AS "isMyBlock"
+         FROM blocks b
+         JOIN (
+             SELECT event_id, MAX(date) AS max_date
+             FROM blocks
+             GROUP BY event_id
+         ) grp USING (event_id)
+         JOIN events e USING (event_id)
+         JOIN block_types bt USING (block_type_id)
+         ORDER BY grp.max_date DESC, b.date ASC, b.begin_time ASC;`,
+        [user_id]
+    );
 };
 
 const editBlock = function (id, title, place, begin_time, end_time, description) {
@@ -26,4 +39,16 @@ const editBlock = function (id, title, place, begin_time, end_time, description)
     );
 }
 
-export { getBlocks, editBlock }
+const getBlockTypes = function (id) {
+    if (id != null) {
+        return pool.query(
+            "select type from block_types bt where bt.block_type_id = $1",
+            [id]
+        );
+    }
+    return pool.query(
+        "select * from block_types"
+    );
+}
+
+export { getBlocks, editBlock, getBlockTypes }

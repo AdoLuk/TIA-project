@@ -2,6 +2,7 @@ import { useRef, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { getBlocks, editBlock } from "../services/blockService";
+import { timeFromString } from "../utils/eventBlockHelpers";
 
 
 function EditBlockPage(props) {
@@ -109,7 +110,7 @@ function EditBlockPage(props) {
                                 type="text"
                                 name="begin_time"
                                 className="form-control"
-                                value={form.begin_time}
+                                value={timeFromString(form.begin_time)}
                                 onChange={handleBlockChange}
                                 placeholder="Enter begin time"
                             />
@@ -126,7 +127,7 @@ function EditBlockPage(props) {
                                 type="text"
                                 name="end_time"
                                 className="form-control"
-                                value={form.end_time}
+                                value={timeFromString(form.end_time)}
                                 onChange={handleBlockChange}
                                 placeholder="Enter end time"
                             />

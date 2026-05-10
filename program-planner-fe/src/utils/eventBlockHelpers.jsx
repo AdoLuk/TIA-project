@@ -8,4 +8,12 @@ function isSubstr(word, string) {
   return normalize(string).includes(normalize(word));
 }
 
-export { isSubstr };
+function dateFromString(s) {
+  return s.split('T')[0].split('-').reverse().join('.');
+}
+
+function timeFromString(s) {
+  return s.split(":").slice(0, 2).join(":");
+}
+
+export { isSubstr, dateFromString, timeFromString };

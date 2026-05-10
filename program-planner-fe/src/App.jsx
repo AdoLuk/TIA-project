@@ -13,7 +13,7 @@ function App() {
   const [myId, setMyId] = useState(null);
 
   return (
-    <div className="container">
+    <div className="container-fluid">
       <BrowserRouter>
         <Header authStatus={authStatus} setAuthStatus={setAuthStatus} 
                 error={error} setError={setError} />
@@ -25,7 +25,7 @@ function App() {
           />
           <Route
             path="/blocks"
-            element={<BlockListPage setAuthStatus={setAuthStatus}
+            element={<BlockListPage setAuthStatus={setAuthStatus} myId={myId}
                                     error={error} setError={setError} />}
           />
           <Route

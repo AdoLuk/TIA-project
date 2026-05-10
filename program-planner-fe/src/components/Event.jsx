@@ -3,11 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { getEventTypes } from "../services/eventService";
 import { getUsername } from "../services/userService";
 import { useEffect, useState } from "react";
-import { isSubstr } from "../utils/eventHelpers";
+import { dateFromString, isSubstr } from "../utils/eventBlockHelpers";
+import { BlockList } from "./BlockList";
 
 function Event(props) {
     const [eventType, setEventType] = useState("");
     const [username, setUsername] = useState("");
+    const [displayWhole, setDisplayWhole] = useState(false);
 
     useEffect(() => {
         getEventTypes(props.event.event_type_id).then((eventType) => {
@@ -27,16 +29,20 @@ function Event(props) {
         });
     }, [])
 
-    const start = props.event.begin_date.split('T')[0].split('-').reverse().join('.');
-    const end = props.event.end_date.split('T')[0].split('-').reverse().join('.');
+    const start = dateFromString(props.event.begin_date);
+    const end = dateFromString(props.event.end_date);
     const days = (new Date(props.event.end_date) - new Date(props.event.begin_date)) 
                  / (1000 * 60 * 60 * 24) + 1;
 
     return (
         <div className="m-2 p-2 border bg-light rounded">
             <div className="row">
-                <div className="mb-2">
-                    <b>{props.event.title} {!isSubstr(eventType, props.event.title) ? "(" + eventType + ")" : ""}</b>
+                <div className="col-sm-1"><p> </p></div>
+                <div className="mb-2 col-sm">
+                    <b>{props.event.title}{!isSubstr(eventType, props.event.title) ? " (" + eventType + ")" : ""}</b>
+                </div>
+                <div className="col-sm-1">
+                    <button className="btn btn-sm btn-secondary" onClick={() => setDisplayWhole(d => !d)}>{displayWhole ? "/\\" : "\\/"}</button>
                 </div>
             </div>
             <div className="row text-start">
@@ -47,6 +53,17 @@ function Event(props) {
                     Trvanie od {start} do {end}, ({days} {days === 1 ? "deň" : days < 5 ? "dni" : "dní"})
                 </div>
             </div>
+            {displayWhole ? 
+            <div>
+                <hr className="m-1"/>
+                <div className="row">
+                    <div className="col-sm-1"></div>
+                    <div className="col-sm">
+                        <BlockList blocks={props.blocks} setError={props.setError}></BlockList>
+                    </div>
+                </div>
+            </div>
+            : null}
         </div>
     )
 }
