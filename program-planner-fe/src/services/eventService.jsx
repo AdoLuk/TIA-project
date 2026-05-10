@@ -39,36 +39,26 @@ function getEventTypes(id) {
         });
 }
 
-// function editEvent(id, event) {
-//     const url = new URL("/api/v1/events", window.location.origin);
-//     if (id != null) url.searchParams.set("event_id", id);
-//     return fetch(url, {
-//         method: "PUT",
-//         headers: {
-//             "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(event),
-//         credentials: "include"
-//     }).then(  // promise is resolved
-//         (response) => {
-//             if (!response.ok) { // HTTP status code NOT between 200-299
-//                 if (response.status === 401) {
-//                     throw new Error("Unauthorized - you don't have permission to access this function.");
-//                 }
-//                 throw new Error("Error editing event");
-//             }
-//             return response.json();
-//         })
-// }
+function editEvent(id, event) {
+    const url = new URL("/api/v1/events", window.location.origin);
+    url.searchParams.set("event_id", id);
+    return fetch(url, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(event),
+        credentials: "include"
+    }).then(  // promise is resolved
+        (response) => {
+            if (!response.ok) { // HTTP status code NOT between 200-299
+                if (response.status === 401) {
+                    throw new Error("Unauthorized - you don't have permission to access this function.");
+                }
+                throw new Error("Error editing event");
+            }
+            return response.json();
+        })
+}
 
-// function addEvent(event) {
-//     return fetch("/api/v1/events", {
-//         method: "POST",
-//         headers: {
-//             "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(event)
-//     });
-// }
-
-export { getEvents, getEventTypes };
+export { getEvents, getEventTypes, editEvent };

@@ -2,8 +2,8 @@ import { useRef, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
 // import {  } from "../services/blockService";
-import { timeFromString } from "../utils/eventBlockHelpers";
-import { getEvents, getEventTypes } from "../services/eventService";
+import { dateFromString, stringFromDate, timeFromString } from "../utils/eventBlockHelpers";
+import { getEvents, getEventTypes, editEvent } from "../services/eventService";
 import { getBlocksByEvent } from "../services/blockService";
 import { BlockList } from "../components/BlockList"
 
@@ -21,7 +21,8 @@ function EditEventPage(props) {
         title: "",
         event_type_id: "",
         begin_date: "",
-        end_date: ""
+        end_date: "",
+        other_type: ""
     })
 
     useEffect(() => {
@@ -55,26 +56,37 @@ function EditEventPage(props) {
         let mounted = true;
         getEventTypes()
         .then(res => { if (mounted) setTypes(res); })
-        .catch(err => { console.error(err); setError?.(err.message); });
+        .catch(err => { console.error(err); props.setError?.(err.message); });
         return () => { mounted = false; };
     }, []);
 
-    function handleBlockChange(e) {
+    function handleValueChange(e) {
         const { name, value } = e.target
         setForm((s) => ({ ...s, [name]: value }))
     }
 
+    function handleDateChange(e) {
+        const { name, value } = e.target
+        setForm((s) => ({ ...s, [name]: stringFromDate(value, form[name]) }))
+    }
+
     function onSave(e) {
         e.preventDefault()
+        props.setError(null)
+        if (new Date(form.begin_date) > new Date(form.end_date)) {
+            props.setError("Prosím zadajte dátum konca neskorší ako dátum začiatku!");
+            setForm((s) => ({ ...s, end_date: form.begin_date }));
+            return;
+        }
         setSaving(true)
-        setError(null)
-        editBlock(id, form).then(() => {navigate('/blocks')})
+        editEvent(id, form).then(() => {})
             .catch ((error) => {
                 console.log(error.message);
-                props.setError(error.message);
+                props.setError?.(error.message);
             })
             .finally(() => {
-                setSaving(false)
+                setSaving(false);
+                navigate('/events');
             })
     }
 
@@ -93,7 +105,7 @@ function EditEventPage(props) {
                                 name="title"
                                 className="form-control"
                                 value={form.title}
-                                onChange={handleBlockChange}
+                                onChange={handleValueChange}
                                 placeholder="Enter event title"
                             />
                         </div>
@@ -107,16 +119,17 @@ function EditEventPage(props) {
                         <div className="col">
                             <select
                                 className="form-control"
+                                name="event_type_id"
                                 value={form.event_type_id ?? ''}
-                                onChange={()=>{}}
+                                onChange={handleValueChange}
                             >
-                                <option value="">Vyber...</option>
+                                <option value="" hidden>Vyber...</option>
                                 {types.map(t => (
                                 <option key={t.event_type_id} value={String(t.event_type_id)}>
                                     {t.type}
                                 </option>
                                 ))}
-                                <option value="__other">Iné</option>
+                                <option value="__other">Iné...</option>
                             </select>
 
                             {form.event_type_id === '__other' && (
@@ -124,20 +137,11 @@ function EditEventPage(props) {
                                 type="text"
                                 className="form-control mt-2"
                                 placeholder="Zadaj nový typ"
-                                value={otherType}
-                                onChange={handleOtherChange}
+                                name="other_type"
+                                value={form.other_type}
+                                onChange={handleValueChange}
                                 />
                             )}
-                        </div>
-                        <div className="col">
-                            <input
-                                type="text"
-                                name="place"
-                                className="form-control"
-                                value={form.place}
-                                onChange={handleBlockChange}
-                                placeholder="Enter block type"
-                            />
                         </div>
                     </div>
                 </div>
@@ -150,10 +154,10 @@ function EditEventPage(props) {
                         <div className="col">
                             <input
                                 type="text"
-                                name="begin_time"
+                                name="begin_date"
                                 className="form-control"
-                                value={form.begin_date}
-                                onChange={handleBlockChange}
+                                value={dateFromString(form.begin_date)}
+                                onChange={handleDateChange}
                                 placeholder="Enter begin date"
                             />
                         </div>
@@ -167,10 +171,10 @@ function EditEventPage(props) {
                         <div className="col">
                             <input
                                 type="text"
-                                name="end_time"
+                                name="end_date"
                                 className="form-control"
-                                value={form.end_date}
-                                onChange={handleBlockChange}
+                                value={dateFromString(form.end_date)}
+                                onChange={handleDateChange}
                                 placeholder="Enter end date"
                             />
                         </div>
@@ -178,7 +182,7 @@ function EditEventPage(props) {
                 </div>
                 <br />
                 <button type="submit" disabled={saving}>{saving ? 'Saving…' : 'Save'}</button>
-                <button type="button" onClick={() => navigate('/blocks')} style={{ marginLeft: 8 }}>Cancel</button>
+                <button type="button" onClick={() => navigate('/events')} style={{ marginLeft: 8 }}>Cancel</button>
             </form>
 
             <hr/>

@@ -53,7 +53,7 @@ router.put('/', function(req, res) {
     const { block_id } = req.query;
     const id = parseInt(block_id);
     if (!Number.isInteger(id)) return res.status(400).json({ error: 'Invalid id' });
-    console.log("_\nEditing block " + id + "\n_");
+    // console.log("_\nEditing block " + id + "\n_");
     const { title, place, begin_time, end_time, description } = req.body;
     if (req.session && req.session.userId) {
         isMyBlock(id, req.session.userId)
