@@ -153,17 +153,17 @@ INSERT INTO blocks ("event_id", "block_type_id", "title", "description", "begin_
 INSERT INTO block_assignments ("block_id", "team_member_id", "leader") VALUES
     (1, 1, false),
     (2, 1, false),
-    (4, 1, true), 
+    (4, 1, false), 
     (5, 1, false),
     (6, 2, false),
-    (7, 2, true),
+    (7, 2, false),
     (8, 3, false),
     (9, 3, false),
     (10, 2, false),
-    (11, 3, true),
+    (11, 3, false),
     (12, 2, false),
     (13, 1, false),
-    (14, 2, true),
+    (14, 2, false),
     (15, 3, false);
 
 COMMIT;

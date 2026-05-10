@@ -13,6 +13,7 @@ function EmptyBlockList() {
 
 
 function BlockList({blocks}) {
+  // console.log(blocks)
   const [blockList, setBlockList] = useState(blocks.map((block) => <Block key={block.block_id} block={block}></Block>));
   useEffect(() => {
     setBlockList(blocks.map((block) => <Block key={block.block_id} block={block}></Block>));

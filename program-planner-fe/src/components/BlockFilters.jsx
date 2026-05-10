@@ -42,7 +42,6 @@ function BlockFilters({ blocks, onFilterChange, setError }) {
 
   return (
     <div className="card p-3 mb-3">
-      <div className="mb-2"><strong>Filtre</strong></div>
 
       <div className="form-check">
         <input className="form-check-input" type="checkbox" id="filter-mine" checked={filters.mine}

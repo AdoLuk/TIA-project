@@ -1,6 +1,6 @@
 import express from 'express';
 // import { SAMPLE_BLOCKS } from '../../migrations/sample_blocks.js';
-import { getBlocks, editBlock, getBlockTypes } from '../../models/blocksModels.js';
+import { getBlocks, editBlock, getBlockTypes, getBlocksByEvent } from '../../models/blocksModels.js';
 import { isMyBlock } from "../../models/blockAssignmentsModels.js";
 
 // const blocks = SAMPLE_BLOCKS;
@@ -10,6 +10,28 @@ router.get('/', function(req, res, next) {
     const { block_id } = req.query;
     if (req.session && req.session.userId) {
         getBlocks(req.session.userId, block_id)
+            .then(
+                (blocks) => {
+                    res.status(200).json(blocks.rows);
+                })
+            .catch(
+                (err) => {
+                    console.log(err);
+                    // internal server error
+                    res.status(500).end();
+                })
+    }
+    // unauthorized
+    else {
+        res.status(401).end();
+    }
+});
+
+router.get('/byEvent', function(req, res, next) {
+    const { event_id } = req.query;
+    console.log("getting blocks by event: " + event_id)
+    if (req.session && req.session.userId) {
+        getBlocksByEvent(req.session.userId, event_id)
             .then(
                 (blocks) => {
                     res.status(200).json(blocks.rows);

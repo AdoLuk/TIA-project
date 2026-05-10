@@ -29,6 +29,7 @@ function Event(props) {
         });
     }, [])
 
+    const navigate = useNavigate();
     const start = dateFromString(props.event.begin_date);
     const end = dateFromString(props.event.end_date);
     const days = (new Date(props.event.end_date) - new Date(props.event.begin_date)) 
@@ -37,20 +38,28 @@ function Event(props) {
     return (
         <div className="m-2 p-2 border bg-light rounded">
             <div className="row">
-                <div className="col-sm-1"><p> </p></div>
+                <div className="col-sm-2"><p> </p></div>
                 <div className="mb-2 col-sm">
                     <b>{props.event.title}{!isSubstr(eventType, props.event.title) ? " (" + eventType + ")" : ""}</b>
                 </div>
-                <div className="col-sm-1">
-                    <button className="btn btn-sm btn-secondary" onClick={() => setDisplayWhole(d => !d)}>{displayWhole ? "/\\" : "\\/"}</button>
+                <div className="col-sm-2">
+                    {true ? <button className="btn btn-sm btn-secondary mt-1" 
+                        onClick={() => navigate(`/events/edit`, { state: { event_id: props.event.event_id } })}>
+                        Upraviť
+                    </button> : null}
                 </div>
             </div>
-            <div className="row text-start">
-                <div>
+            <div className="row">
+                <div className="col text-start">
                     Vedúci: {username || <em className="text-secondary">...nepodarilo sa nájsť vedúceho akcie...</em>}
                 </div>
-                <div>
+            </div>
+            <div className="row">
+                <div className="col text-start">
                     Trvanie od {start} do {end}, ({days} {days === 1 ? "deň" : days < 5 ? "dni" : "dní"})
+                </div>
+                <div className="col-sm-2">
+                    <button className="btn btn-sm btn-secondary" onClick={() => setDisplayWhole(d => !d)}>{displayWhole ? "/\\" : "\\/"}</button>
                 </div>
             </div>
             {displayWhole ? 

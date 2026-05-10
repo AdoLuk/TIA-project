@@ -20,8 +20,6 @@ function EventFilters({ events, onFilterChange, setError }) {
 
   // volanie callbacku pri zmene filtrov
 useEffect(() => {
-    // if (filters.types.size === types.length) filters.types = new Set();
-    // if (filters.years.size === years.length) filters.years = new Set();
     const normalized = {
       mine: filters.mine,
       ongoing: filters.ongoing,
@@ -55,8 +53,7 @@ useEffect(() => {
 
   return (
     <div className="card p-3 mb-3">
-      <div className="mb-2"><strong>Filtre</strong></div>
-
+        
       <div className="form-check">
         <input className="form-check-input" type="checkbox" id="filter-mine" checked={filters.mine}
             onChange={e => setFilters(f => ({ ...f, mine: e.target.checked }))} />

@@ -29,6 +29,19 @@ const getBlocks = function (user_id, block_id) {
     );
 };
 
+const getBlocksByEvent = function(user_id, event_id) {
+    return pool.query(
+        `SELECT b.*, e.title as event_title, bt.type AS block_type,
+            (EXISTS(SELECT 1 FROM block_assignments ba WHERE ba.block_id = b.block_id AND ba.team_member_id = $1)) AS "isMyBlock"
+         FROM blocks b
+         JOIN block_types bt USING (block_type_id)
+         JOIN events e USING (event_id)
+         WHERE b.event_id = $2
+         ORDER BY b.date ASC, b.begin_time ASC;`,
+        [user_id, event_id]
+    )
+}
+
 const editBlock = function (id, title, place, begin_time, end_time, description) {
     return pool.query(
         `UPDATE blocks
@@ -51,4 +64,4 @@ const getBlockTypes = function (id) {
     );
 }
 
-export { getBlocks, editBlock, getBlockTypes }
+export { getBlocks, getBlocksByEvent, editBlock, getBlockTypes }
