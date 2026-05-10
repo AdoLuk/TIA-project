@@ -14,7 +14,7 @@ function Block(props) {
                     <b>{props.block.title}{!isSubstr(props.block.block_type, props.block.title) ? " (" + props.block.block_type + ")" : ""}</b>
                     {<p className="m-0"><em>({props.block.event_title})</em></p>}
                 </div>
-                <div className="col-sm-2 align-middle">
+                <div className="col-sm-2">
                     {props.block.isMyBlock ? <button className="btn btn-sm btn-secondary mt-1" 
                         onClick={() => navigate(`/blocks/edit`, { state: { block_id: props.block.block_id } })}>
                         Upraviť

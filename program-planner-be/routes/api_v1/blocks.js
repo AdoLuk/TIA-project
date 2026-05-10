@@ -12,6 +12,7 @@ router.get('/', function(req, res, next) {
         getBlocks(req.session.userId, block_id)
             .then(
                 (blocks) => {
+                    // console.log(JSON.stringify(blocks.rows))
                     res.status(200).json(blocks.rows);
                 })
             .catch(
@@ -29,7 +30,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/byEvent', function(req, res, next) {
     const { event_id } = req.query;
-    console.log("getting blocks by event: " + event_id)
+    // console.log("getting blocks by event: " + event_id)
     if (req.session && req.session.userId) {
         getBlocksByEvent(req.session.userId, event_id)
             .then(

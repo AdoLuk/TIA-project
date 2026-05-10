@@ -108,18 +108,18 @@ INSERT INTO event_types (type) VALUES
 
 INSERT INTO events ("team_member_id", "event_type_id", "title", "begin_date", "end_date") VALUES
     (1, 1, 'Festival 123', '2024-09-01', '2024-09-03'),
-    (1, 1, 'Letný festival - deň 1', '2024-07-10', '2024-07-12'),
-    (1, 2, 'Detský tábor - začiatok turnusu', '2024-08-01', '2024-08-07'),
+    (2, 1, 'Letný festival - deň 1', '2024-07-10', '2024-07-12'),
+    (3, 2, 'Detský tábor - začiatok turnusu', '2024-08-01', '2024-08-07'),
     (1, 1, 'Mestský koncert', '2025-05-15', '2025-05-15'),
-    (1, 2, 'Víkendový tímový retreat', '2024-11-22', '2024-11-24'),
-    (1, 1, 'Novoročný open-air', '2025-01-01', '2025-01-01'),
-    (1, 1, 'Jarný hudobný festival', '2026-03-20', '2026-03-22'),
+    (2, 2, 'Víkendový tímový retreat', '2024-11-22', '2024-11-24'),
+    (2, 1, 'Novoročný open-air', '2025-01-01', '2025-01-01'),
+    (3, 1, 'Jarný hudobný festival', '2026-03-20', '2026-03-22'),
     (1, 2, 'Letný výcvikový tábor - turnus A', '2026-07-05', '2026-07-12'),
-    (1, 1, 'Jednodňový open-air', '2026-05-30', '2026-05-30'),
+    (2, 1, 'Jednodňový open-air', '2026-05-30', '2026-05-30'),
     (1, 2, 'Rodinný víkendový tábor', '2026-08-14', '2026-08-16'),
-    (1, 1, 'Nováčikovský koncert', '2026-01-10', '2026-01-10'),
-    (1, 2, 'Workshop pre vedúcich', '2026-11-02', '2026-11-04'),
-    (1, 1, 'Vianočný jarmok', '2026-12-18', '2026-12-18');
+    (3, 1, 'Nováčikovský koncert', '2026-01-10', '2026-01-10'),
+    (2, 2, 'Workshop pre vedúcich', '2026-11-02', '2026-11-04'),
+    (3, 1, 'Vianočný jarmok', '2026-12-18', '2026-12-18');
 
 INSERT INTO block_types (type) VALUES
     ('koncert'),

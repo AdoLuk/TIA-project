@@ -65,10 +65,10 @@ function EditEventPage(props) {
         setForm((s) => ({ ...s, [name]: value }))
     }
 
-    function handleDateChange(e) {
-        const { name, value } = e.target
-        setForm((s) => ({ ...s, [name]: stringFromDate(value, form[name]) }))
-    }
+    // function handleDateChange(e) {
+    //     const { name, value } = e.target
+    //     setForm((s) => ({ ...s, [name]: stringFromDate(value, form[name]) }))
+    // }
 
     function onSave(e) {
         e.preventDefault()
@@ -147,34 +147,30 @@ function EditEventPage(props) {
                 </div>
 
                 <div className="form-group">
-                    <div className="row m-3">
+                    <div className="m-3 row">
                         <div className="col-2 p-1">
                             <label>Dátum od</label>
                         </div>
-                        <div className="col">
+                        <div className="col-4">
                             <input
-                                type="text"
+                                type="date"
                                 name="begin_date"
                                 className="form-control"
-                                value={dateFromString(form.begin_date)}
-                                onChange={handleDateChange}
+                                value={form.begin_date.split("T")[0]}
+                                onChange={handleValueChange}
                                 placeholder="Enter begin date"
                             />
                         </div>
-                    </div>
-                </div>
-                <div className="form-group">
-                    <div className="row m-3">
                         <div className="col-2 p-1">
                             <label>Dátum do</label>
                         </div>
-                        <div className="col">
+                        <div className="col-4">
                             <input
-                                type="text"
+                                type="date"
                                 name="end_date"
                                 className="form-control"
-                                value={dateFromString(form.end_date)}
-                                onChange={handleDateChange}
+                                value={form.end_date}
+                                onChange={handleValueChange}
                                 placeholder="Enter end date"
                             />
                         </div>

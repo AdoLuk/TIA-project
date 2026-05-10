@@ -14,7 +14,7 @@ function App() {
   const [myId, setMyId] = useState(null);
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid pb-5">
       <BrowserRouter>
         <Header authStatus={authStatus} setAuthStatus={setAuthStatus} 
                 error={error} setError={setError} />

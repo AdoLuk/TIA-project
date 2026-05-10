@@ -7,9 +7,10 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
     const { event_id } = req.query;
     if (req.session && req.session.userId) {
-        getEvents(event_id)
+        getEvents(req.session.userId, event_id)
             .then(
                 (events) => {
+                    // console.log(JSON.stringify(events.rows))
                     res.status(200).json(events.rows);
                 })
             .catch(
@@ -57,8 +58,10 @@ router.put('/', function(req, res) {
     // console.log("_\nEditing event " + id + "\n_");
     const { title, event_type_id, begin_date, end_date } = req.body;
     if (req.session && req.session.userId) {
+        // console.log("user: " + req.session.userId + " editing event: " + id)
         isMyEvent(id, req.session.userId)
             .then((result) => {
+                // console.log(result);
                 if (result.isMyEvent) {
                     editEvent(id, title, event_type_id, begin_date, end_date)
                         .then((result) => {

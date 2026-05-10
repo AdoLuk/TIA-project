@@ -1,6 +1,8 @@
-import {Pool} from "pg";
+import {Pool, types} from "pg";
 import dotenv from "dotenv";
 dotenv.config();
+types.setTypeParser(1082, val => val); // no parsing of dates
+
 
 const pool = new Pool(
     {

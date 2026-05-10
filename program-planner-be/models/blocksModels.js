@@ -5,7 +5,7 @@ import pool from '../config/db.js';
 // returns promise !
 const getBlocks = function (user_id, block_id) {
     if (block_id != null) {
-        console.log("getBlocks called with id: " + block_id);
+        // console.log("getBlocks called with id: " + block_id);
         return pool.query(
             `select b.*, (EXISTS(SELECT 1 FROM block_assignments ba WHERE ba.block_id = b.block_id AND ba.team_member_id = $1)) AS "isMyBlock" 
             from blocks b 
