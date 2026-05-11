@@ -1,7 +1,8 @@
 import express from 'express';
 // import { SAMPLE_BLOCKS } from '../../migrations/sample_blocks.js';
-import { getBlocks, editBlock, getBlockTypes, getBlocksByEvent } from '../../models/blocksModels.js';
-import { isMyBlock } from "../../models/blockAssignmentsModels.js";
+import { getBlocks, editBlock, getBlockTypes, getBlocksByEvent, createBlock, deleteBlock } from '../../models/blocksModels.js';
+import { isMyEvent } from '../../models/eventsModels.js';
+import { isMyBlockOrInMyEvent } from '../../models/blocksModels.js';
 
 // const blocks = SAMPLE_BLOCKS;
 var router = express.Router();
@@ -57,9 +58,9 @@ router.put('/', function(req, res) {
     // console.log("_\nEditing block " + id + "\n_");
     const { title, place, begin_time, end_time, description } = req.body;
     if (req.session && req.session.userId) {
-        isMyBlock(id, req.session.userId)
+        isMyBlockOrInMyEvent(id, req.session.userId)
             .then((result) => {
-                if (result.isMyBlock) {
+                if (result.isMyBlockOrInMyEvent) {
                     editBlock(id, title, place, begin_time, end_time, description)
                         .then((result) => {
                             if (result.rowCount === 0) return res.status(404).json({ error: 'Not found' })
@@ -82,9 +83,42 @@ router.put('/', function(req, res) {
 })
 
 router.post('/', function(req, res, next) {
- console.log('POST /api/v1/blocks');
- blocks.push(req.body);
- res.status(200);
+    if (req.session && req.session.userId) {
+        isMyEvent(req.body.event_id, req.session.userId).then(result => {
+            if (result.isMyEvent) {
+                createBlock(req.body.event_id, req.body.date).then(result => {
+                    return res.status(200).end();
+                }).catch(err => {
+                    console.log(err);
+                    return res.status(500).end();
+                });
+            } else {
+                return res.status(401).end();
+            }
+        })
+    } else return res.status(401).end();
+});
+
+router.delete('/', function(req, res, next) {
+    const { block_id } = req.query;
+    // console.log("deleting block(blocks.js): " + block_id);
+    if (req.session && req.session.userId) {
+        getBlocks(req.session.userId, block_id).then(result => {
+            if (result.rowCount > 0) {
+                const blockToDelete = result.rows[0];
+                if (blockToDelete.isInMyEvent) {
+                    deleteBlock(block_id).then(result => {
+                        return res.status(200).end();
+                    }).catch(err => {
+                        console.log(err);
+                        return res.status(500).end();
+                    });
+                } else {
+                    return res.status(401).end();
+                }
+            } else return res.status(500).end();
+        })
+    } else return res.status(401).end();
 });
 
 router.get('/types', function(req, res, next) {

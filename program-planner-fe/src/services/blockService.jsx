@@ -40,7 +40,7 @@ function getBlocksByEvent(event_id) {
 
 function editBlock(id, block) {
     const url = new URL("/api/v1/blocks", window.location.origin);
-    console.log("_\nEditing block " + id + "\n_");
+    // console.log("_\nEditing block " + id + "\n_");
     if (id != null) url.searchParams.set("block_id", id);
     return fetch(url, {
         method: "PUT",
@@ -61,13 +61,25 @@ function editBlock(id, block) {
         })
 }
 
-function addBlock(block) {
+function createBlock(event_id, date) {
     return fetch("/api/v1/blocks", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(block)
+        body: JSON.stringify({event_id: event_id, date: date})
+    });
+}
+
+function deleteBlock(block_id) {
+    const url = new URL("/api/v1/blocks", window.location.origin);
+    // console.log("deleting block(blockService): " + block_id);
+    url.searchParams.set("block_id", block_id);
+    return fetch(url, {
+        method: "DELETE",
+        headers: {
+            "Content-Type": "application/json",
+        }
     });
 }
 
@@ -89,4 +101,4 @@ function getBlockTypes(id) {
         });
 }
 
-export { getBlocks, getBlocksByEvent, editBlock, addBlock, getBlockTypes };
+export { getBlocks, getBlocksByEvent, editBlock, createBlock, getBlockTypes, deleteBlock };

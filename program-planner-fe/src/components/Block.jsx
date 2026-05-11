@@ -15,7 +15,7 @@ function Block(props) {
                     {<p className="m-0"><em>({props.block.event_title})</em></p>}
                 </div>
                 <div className="col-sm-2">
-                    {props.block.isMyBlock ? <button className="btn btn-sm btn-secondary mt-1" 
+                    {props.block.isMyBlock || props.block.isInMyEvent ? <button className="btn btn-sm btn-secondary mt-1" 
                         onClick={() => navigate(`/blocks/edit`, { state: { block_id: props.block.block_id } })}>
                         Upraviť
                     </button> : null}

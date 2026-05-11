@@ -11,7 +11,6 @@ function BlockListPage(props) {
   useEffect(() => {
     getBlocks().then(
       (blocks) => {
-        setBlocks(blocks);
         setFilteredBlocks(blocks);
     }).catch((error) => {
       console.log(error.message);
@@ -19,9 +18,9 @@ function BlockListPage(props) {
     });
 
     const fetchBlocksInterval = setInterval(() => {
-        getBlocks().then(
-          (blocks) => setBlocks(blocks)
-        ).catch((error) => {
+        getBlocks().then((blocks) => {
+          setBlocks(blocks);
+        }).catch((error) => {
           console.log(error.message);
           props.setError(error.message);
         });
@@ -53,7 +52,7 @@ function BlockListPage(props) {
                   <div className="">
                     Programové bloky:
                   </div>
-                  <BlockList blocks={filteredBlocks}></BlockList> 
+                  <BlockList blocks={filteredBlocks} eventLeader={false}></BlockList> 
                 </div>
             </div>
 

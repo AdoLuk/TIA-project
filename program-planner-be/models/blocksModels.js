@@ -7,15 +7,18 @@ const getBlocks = function (user_id, block_id) {
     if (block_id != null) {
         // console.log("getBlocks called with id: " + block_id);
         return pool.query(
-            `select b.*, (EXISTS(SELECT 1 FROM block_assignments ba WHERE ba.block_id = b.block_id AND ba.team_member_id = $1)) AS "isMyBlock" 
+            `select b.*, (EXISTS(SELECT 1 FROM block_assignments ba WHERE ba.block_id = b.block_id AND ba.team_member_id = $1)) AS "isMyBlock",
+                e.team_member_id = $1 as "isInMyEvent", e.title AS event_title
             from blocks b 
+            join events e using (event_id)
             where b.block_id = $2`,
             [user_id, block_id]
         );
     }
     return pool.query(
         `SELECT b.*, e.title AS event_title, bt.type AS block_type,
-            (EXISTS(SELECT 1 FROM block_assignments ba WHERE ba.block_id = b.block_id AND ba.team_member_id = $1)) AS "isMyBlock"
+            (EXISTS(SELECT 1 FROM block_assignments ba WHERE ba.block_id = b.block_id AND ba.team_member_id = $1)) AS "isMyBlock",
+            e.team_member_id = $1 as "isInMyEvent"
          FROM blocks b
          JOIN (
              SELECT event_id, MAX(date) AS max_date
@@ -32,7 +35,8 @@ const getBlocks = function (user_id, block_id) {
 const getBlocksByEvent = function(user_id, event_id) {
     return pool.query(
         `SELECT b.*, e.title as event_title, bt.type AS block_type,
-            (EXISTS(SELECT 1 FROM block_assignments ba WHERE ba.block_id = b.block_id AND ba.team_member_id = $1)) AS "isMyBlock"
+            (EXISTS(SELECT 1 FROM block_assignments ba WHERE ba.block_id = b.block_id AND ba.team_member_id = $1)) AS "isMyBlock",
+            e.team_member_id = $1 as "isInMyEvent"
          FROM blocks b
          JOIN block_types bt USING (block_type_id)
          JOIN events e USING (event_id)
@@ -40,6 +44,18 @@ const getBlocksByEvent = function(user_id, event_id) {
          ORDER BY b.date ASC, b.begin_time ASC;`,
         [user_id, event_id]
     )
+}
+
+const isMyBlockOrInMyEvent = function (block_id, team_member_id) {
+    return getBlocks(team_member_id, block_id)
+        .then((result) => {
+            console.log(result)
+            result.isMyBlockOrInMyEvent = result.rowCount && (result.rows[0].isMyBlock || result.rows[0].isInMyEvent);
+            return result;
+        })
+        .catch((e) => {
+            console.log(e);
+        });
 }
 
 const editBlock = function (id, title, place, begin_time, end_time, description) {
@@ -50,6 +66,15 @@ const editBlock = function (id, title, place, begin_time, end_time, description)
          RETURNING *`,
         [title, place, begin_time, end_time, description, id]
     );
+}
+
+const deleteBlock = function (id) {
+    return pool.query(
+        `DELETE FROM blocks
+         WHERE block_id = $1
+         RETURNING *`,
+        [id]
+    )
 }
 
 const getBlockTypes = function (id) {
@@ -64,4 +89,13 @@ const getBlockTypes = function (id) {
     );
 }
 
-export { getBlocks, getBlocksByEvent, editBlock, getBlockTypes }
+const createBlock = function (event_id, date) {
+    return pool.query(
+        `INSERT INTO blocks ("event_id", "block_type_id", "title", "description", "begin_time", "end_time", "place", "date") VALUES
+            ($1, 1, 'nazov', 'popis', '00:00:00', '00:00:01', 'miesto', $2)
+         RETURNING *`,
+    [event_id, date]
+    )
+}
+
+export { getBlocks, getBlocksByEvent, editBlock, getBlockTypes, createBlock, isMyBlockOrInMyEvent, deleteBlock }

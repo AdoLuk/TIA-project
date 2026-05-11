@@ -4,14 +4,15 @@ import pool from '../config/db.js';
 // use parametrized queries to prevent SQL injection 
 
 // returns promise !
-const getEvents = function (user_id, id) {
-    if (id != null) {
-        // console.log("getEvents called with id: " + id);
+const getEvents = function (user_id, event_id) {
+    if (event_id != null) {
+        // console.log("getEvents called with id: " + event_id);
         return pool.query(
             "select * from events e where e.event_id = $1",
-            [id]
+            [event_id]
         );
     }
+    // console.log("event id: " + event_id + " is null")
     return pool.query(
             `select e.*, et.type as event_type, e.team_member_id=$1 as "isMyEvent", u.username
             from events e
@@ -35,9 +36,9 @@ const getEventTypes = function (id) {
 }
 
 const isMyEvent = function (event_id, team_member_id) {
-    return getEvents(0, event_id)
+    return getEvents(team_member_id, event_id)
         .then((result) => {
-            // console.log("isMyBlock result: " + JSON.stringify(result.rows && result.rows.length > 0));
+            // console.log("isMyEvent result: " + JSON.stringify(result.rows && result.rows.length > 0));
             result.isMyEvent = result.rowCount > 0 && result.rows[0].team_member_id === team_member_id;
             return result;
         })

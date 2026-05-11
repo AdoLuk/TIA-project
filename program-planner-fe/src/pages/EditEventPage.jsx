@@ -4,7 +4,7 @@ import { useState } from "react";
 // import {  } from "../services/blockService";
 import { dateFromString, stringFromDate, timeFromString } from "../utils/eventBlockHelpers";
 import { getEvents, getEventTypes, editEvent } from "../services/eventService";
-import { getBlocksByEvent } from "../services/blockService";
+import { createBlock, getBlocksByEvent } from "../services/blockService";
 import { BlockList } from "../components/BlockList"
 
 
@@ -13,7 +13,9 @@ function EditEventPage(props) {
     const id = location.state?.event_id
     const navigate = useNavigate()
     const [title, setTitle] = useState('')
+    const [date, setDate] = useState("")
     const [saving, setSaving] = useState(false)
+    const [update, setUpdate] = useState(false)
     const [types, setTypes] = useState([]);
     const [loading, setLoading] = useState(false)
     const [blocks, setBlocks] = useState([])
@@ -26,19 +28,21 @@ function EditEventPage(props) {
     })
 
     useEffect(() => {
-        getBlocksByEvent(id).then((result) =>
+        getBlocksByEvent(id).then((result) => {
+            // console.log("refreshing blocks: ")
             setBlocks(result)
-        ).catch((err) => {
+        }).catch((err) => {
             console.log(err);
             props.setError?.(err);
         })
-    }, [])
+    }, [update])
 
     useEffect(() => {
         getEvents(id).then(
             (event) => {
                 event = event[0]
                 setTitle(event.title)
+                setDate(event.begin_date)
                 setForm({
                     title: event.title,
                     event_type_id: event.event_type_id,
@@ -88,6 +92,10 @@ function EditEventPage(props) {
                 setSaving(false);
                 navigate('/events');
             })
+    }
+
+    function createNewBlock() {
+        createBlock(id, date).then(r => {}).catch(err => console.log(err)).finally(setUpdate(!update))
     }
 
     return (
@@ -185,10 +193,12 @@ function EditEventPage(props) {
             <h3>Úprava blokov akcie</h3>
             <div className="row">
                 <div className="col">
-                    <button className="btn btn-secondary rounded">+ pridať nový blok</button>
+                    <button className="btn btn-secondary rounded"
+                        onClick={createNewBlock}
+                    >+ pridať nový blok</button>
                 </div>
             </div>
-            <BlockList blocks={blocks}></BlockList>
+            <BlockList blocks={blocks} eventLeader={true} update={update} setUpdate={setUpdate}></BlockList>
         </div>
     
     )

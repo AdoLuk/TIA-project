@@ -12,7 +12,6 @@ const getBlockAssignments = function (block_id, team_member_id) {
 const isMyBlock = function (block_id, team_member_id) {
     return getBlockAssignments(block_id, team_member_id)
         .then((result) => {
-            console.log("isMyBlock result: " + JSON.stringify(result.rows && result.rows.length > 0));
             result.isMyBlock = result.rows && result.rows.length > 0;
             return result;
         })
